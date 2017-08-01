@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 )
 
 type Vector struct {
@@ -11,7 +12,7 @@ type Vector struct {
 
 func main() {
 	var test = Vector{1, 2}
-	rand := Math.rand(10)
+	rand := rand.Intn(100)
 	fmt.Println("Hello world!")
-	fmt.Println(test)
+	fmt.Println(test, rand)
 }
