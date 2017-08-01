@@ -2,14 +2,14 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"math/rand"
 	"time"
 )
 
-//Vector : creates a two-dimensional vector
+//Vector : creates a two-dimensional vector of float64 values
 type Vector struct {
-	X int
-	Y int
+	X, Y float64
 }
 
 func midpoint(p1, p2 Vector) (mid Vector) {
@@ -17,21 +17,39 @@ func midpoint(p1, p2 Vector) (mid Vector) {
 	return
 }
 
-func generateRandomMatrix(width, height int) [][]int {
+func generateMatrix(width, height int) [][]int {
 	matrix := make([][]int, width)
 	for i:= range matrix {
 		matrix[i] = make([]int, height)
 	}
 
-	rand.Seed( time.Now().UTC().UnixNano() )
-	
-	for i := 0; i < width; i++ {
-		for j:= 0; j < width; j++ {
+	return matrix
+}
+
+func generateProblemMatrix() (matrix [3][3]int) {
+
+	rand.Seed(time.Now().UTC().UnixNano())
+
+	for i := 0; i < 3; i++ {
+		for j := 0; j < 3; j++ {
 			matrix[i][j] = rand.Int() % 10
 		}
 	}
+	
+	return
+}
 
-	return matrix
+func fibonacci(maxRange , n1, n2 int) {
+	defer fmt.Println(n1)
+
+	maxRange--
+
+	if maxRange == 1 {
+		return
+	}
+
+	fibonacci(maxRange, n2, n2 + n1)
+
 }
 
 func main() {
@@ -42,5 +60,9 @@ func main() {
 	fmt.Println("Hello World!")
 	fmt.Println(midpoint(point1, point2))
 	fmt.Println(test)
-	fmt.Println(generateRandomMatrix(3,3))
+	fmt.Println(generateMatrix(3,3))
+	fmt.Println(generateProblemMatrix())
+	fmt.Println(math.Sqrt(2), math.Sqrt2)
+
+	//fibonacci(100, 0, 1)
 }
