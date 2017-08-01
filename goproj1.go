@@ -39,7 +39,7 @@ func generateProblemMatrix() (matrix [3][3]int) {
 	return
 }
 
-func fibonacci(maxRange , n1, n2 int) {
+func fibonacciRecursive(maxRange , n1, n2 int) {
 	defer fmt.Println(n1)
 
 	maxRange--
@@ -48,14 +48,25 @@ func fibonacci(maxRange , n1, n2 int) {
 		return
 	}
 
-	fibonacci(maxRange, n2, n2 + n1)
+	fibonacciRecursive(maxRange, n2, n2 + n1)
 
+}
+
+func fibonacci() func() int {
+	a := 0
+	b := 1
+
+	return func() int {
+		a, b = a + b, a
+		return b
+	}
 }
 
 func main() {
 	var test = Vector{1, 2}
 	point1 := Vector{6,12}
 	point2 := Vector{0,0}
+	f := fibonacci()
 
 	fmt.Println("Hello World!")
 	fmt.Println(midpoint(point1, point2))
@@ -64,5 +75,8 @@ func main() {
 	fmt.Println(generateProblemMatrix())
 	fmt.Println(math.Sqrt(2), math.Sqrt2)
 
-	//fibonacci(100, 0, 1)
+	for i := 0; i < 10; i++ {
+		fmt.Println(i, f())
+	}
+	//fibonacciRecursive(100, 0, 1)
 }
