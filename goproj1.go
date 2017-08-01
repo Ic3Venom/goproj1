@@ -13,7 +13,7 @@ type Vector struct {
 }
 
 func midpoint(p1, p2 Vector) (mid Vector) {
-	mid = Vector{(p1.X + p2.X) / 2, (p1.Y + p2.Y) / 2} 
+	mid = Vector{(p1.X + p2.X) / 2, (p1.Y + p2.Y) / 2}
 	return
 }
 
@@ -35,7 +35,7 @@ func generateProblemMatrix() (matrix [3][3]int) {
 			matrix[i][j] = rand.Int() % 10
 		}
 	}
-	
+
 	return
 }
 
@@ -62,6 +62,12 @@ func fibonacci() func() int {
 	}
 }
 
+type integer int
+
+func (i integer) Add(n integer) integer {
+	return i + n
+}
+
 func main() {
 	var test = Vector{1, 2}
 	point1 := Vector{6,12}
@@ -79,4 +85,6 @@ func main() {
 		fmt.Println(i, f())
 	}
 	//fibonacciRecursive(100, 0, 1)
+
+	fmt.Println(integer(10).Add(10))
 }
