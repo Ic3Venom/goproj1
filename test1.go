@@ -87,4 +87,5 @@ func main() {
 	//fibonacciRecursive(100, 0, 1)
 
 	fmt.Println(integer(10).Add(10))
+	fmt.Println(pow(10, 0), pow(1, 100), pow(7,7)) //Error at pow(7, 7)
 }
